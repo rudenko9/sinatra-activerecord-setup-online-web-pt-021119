@@ -1,14 +1,14 @@
 require_relative 'config/environment'
 
 class App < Sinatra::Base
-  def self.create_table
-    sql = <<-SQL
-    CREATE TABLE dos(
-    id INTEGER PRIMARY KEY,
-    name TEXT,
-    breed TEXT)
-    SQL
-    DB[:conn].execute(sql)
-    
+  def up
+    create_table :dogs do |t|
+      t.string :name
+      t.string :breed
+    end
+  end
+ 
+  def down
+    drop_table :dogs
   end
 end
