@@ -1,7 +1,7 @@
 require_relative 'config/environment'
 
 class App < Sinatra::Base
-  def up
+  def change
     create_table :dogs do |t|
       t.string :name
       t.string :breed
